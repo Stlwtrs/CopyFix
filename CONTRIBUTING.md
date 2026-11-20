@@ -1,39 +1,38 @@
 # Contributing to CopyFix
 
-First off, thank you so much for considering contributing to `CopyFix`!
+Thanks for your interest in CopyFix. Bug reports, test results from different kernels and filesystems, and code improvements are all welcome.
 
-## How Can I Contribute?
+For security vulnerabilities, follow [SECURITY.md](SECURITY.md) instead of opening a public issue.
 
-### Reporting Bugs
+## Reporting Bugs
 
-This section will guide you through submitting a bug report. Following these guidelines helps maintainers and the community understand your report, reproduce the behavior, and find related reports.
+Use the **Bug report** form in the Issues tab. Include:
 
-* Use the GitHub Issues tab.
+- The exact command you ran, and its full output (`--json` output is ideal)
+- Your distribution, kernel version (`uname -r`) and Python version (`python3 --version`)
+- The filesystem of the files you checked (`findmnt -T /usr/bin/su`)
 
-* Describe the exact command you ran.
+## Suggesting Improvements
 
-* Include your OS and Python version *(`python3 --version`)*
+Use the **Feature request** form, and explain how the change improves detection or reduces false results.
 
-### Suggesting Enhancements
+## Pull Requests
 
-* Open a GitHub Issue and use the `[Feature Request]` tag in the title.
+1. Fork the repository and create a branch from `main`.
+2. Keep CopyFix dependency-free: Python 3.9+ standard library only.
+3. Add or update tests in `tests/` for any change in behavior.
+4. Run the test suite and make sure it passes:
 
-* Explain *why* this enhancement would be useful for File Integrity Monitoring.
+   ```bash
+   python3 -m unittest discover -s tests -v
+   ```
 
-### Pull Requests
-
-**1.** Fork the repo and create a branch from `main`.
-
-**2.** If you have added code that should be tested, add tests.
-
-**3.** Ensure your code follows PEP 8 *(Python style guide)*.
-
-**4.** Issue the pull request!
+5. Run CopyFix against real binaries on your system and include the output in the pull request.
+6. Update `README.md` and `CHANGELOG.md` if behavior or usage changes.
 
 ## Code Style
 
-* Use 4 spaces for indentation *(no tabs)*.
-
-* Keep functions small and focused.
-
-* Add comments to complex logic *(especially anything dealing with `/proc`)*.
+- Follow PEP 8, with 4-space indentation.
+- Keep functions small and focused.
+- Comment anything involving `/proc`, `O_DIRECT` or the page cache, and explain *why*, not just *what*.
+- Never weaken a check to avoid a false positive without documenting the trade-off.

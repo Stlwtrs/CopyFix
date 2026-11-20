@@ -1,0 +1,17 @@
+[Unit]
+Description=CopyFix page-cache integrity check (CVE-2026-31431)
+Documentation=https://github.com/Stlwtrs/CopyFix
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/copyfix --processes
+# Results go to the journal: journalctl -u copyfix.service
+
+# CopyFix only reads files and /proc, so lock the service down.
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateNetwork=yes
+RestrictAddressFamilies=AF_UNIX
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH CAP_SYS_PTRACE

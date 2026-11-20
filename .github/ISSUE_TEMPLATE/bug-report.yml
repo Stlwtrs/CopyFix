@@ -1,0 +1,41 @@
+name: Bug report
+description: CopyFix crashed, gave a wrong result, or behaved unexpectedly
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Found a way to bypass detection?** Please don't use this form. Report it privately as described in SECURITY.md.
+  - type: input
+    id: version
+    attributes:
+      label: CopyFix version
+      placeholder: "output of: copyfix --version"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Distribution, kernel and Python version
+      placeholder: "Arch Linux, 6.18.2-arch1-1, Python 3.13.1"
+    validations:
+      required: true
+  - type: input
+    id: filesystem
+    attributes:
+      label: Filesystem of the checked files
+      placeholder: "output of: findmnt -no FSTYPE -T /usr/bin/su"
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and output
+      description: The exact command you ran and its full output. `--json` output is ideal.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+    validations:
+      required: true

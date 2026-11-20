@@ -1,39 +1,47 @@
 # Security Policy
 
+CopyFix is a security tool, so a flaw in it can give users false confidence. Reports are taken seriously and handled privately.
+
 ## Supported Versions
 
-Currently, only the latest version of `CopyFix` on the `main` branch is supported with security updates.
-
-| Version | Supported          |
-| ------- | ------------------ |
-| Main    | :white_check_mark: |
-| < 1.0   | :x:                |
-
-
-## Reporting a Vulnerability
-
-**Please do not report security vulnerabilities through public GitHub issues.**
-
-If you discover a vulnerability in `CopyFix` *(e.g. a way to bypass the hash comparison, a privilege escalation vector, or a denial of service vulnerability)*, please report it responsibly.
-
-Please send an email to **stlwtrs@proton.me** or reach out to me via my TryHackMe or LinkedIn profiles listed on my GitHub profile.
-
-You should receive a response within 48 hours. If for some reason you do not, please follow up via LinkedIn to ensure I received your original message.
-
-Please include the following details in your report:
-
-* Type of issue *(e.g. bypass, crash, memory leak, etc..)*
-
-* Full paths of source file(s) related to the manifestation of the issue.
-
-* The location of the affected source code *(tag/branch/commit or direct URL)*
-
-* Any special configuration required to reproduce the issue.
-
-* PoC or exploit code (if applicable)
-
-* Impact of the issue, including how an attacker might exploit the issue.
+| Version | Supported |
+|---|:--:|
+| 2.x (`main`) | ✅ |
+| 1.x | ❌ Does not detect Copy Fail. Please upgrade. |
 
 ## Scope
 
-`CopyFix` is designed to detect *existing* memory tampering by comparing hashes. It is **not** designed to prevent an attacker with `root` prvileges from killing the `CopyFix` process or manipulating the output. The scope of this policy covers vulnerabilities **within the Python script itself**.
+**In scope:**
+
+- Ways to make CopyFix report `clean` for a file whose cached contents differ from disk (detection bypasses)
+- Ways a non-root user can make CopyFix crash, hang or report false results
+- False positives on common, supported filesystems
+- Bugs in the example systemd units that weaken the service's sandboxing
+
+**Out of scope:**
+
+- An attacker who already has root stopping, modifying or faking CopyFix. This is a documented limitation.
+- Vulnerabilities in the Linux kernel itself, including CVE-2026-31431. Report those upstream.
+- Files on filesystems CopyFix reports as `unsupported`.
+
+## Reporting a Vulnerability
+
+**Please do not open a public issue for security problems.**
+
+Report privately through GitHub: open the repository's **Security** tab and select **Report a vulnerability**. If that isn't possible, email **stlwtrs@proton.me**.
+
+Please include:
+
+- The CopyFix version (`copyfix --version`), kernel version and filesystem type
+- Steps to reproduce, or proof-of-concept code
+- The impact: what an attacker gains or what CopyFix gets wrong
+
+## What to Expect
+
+CopyFix is maintained by one person, so responses are best effort:
+
+- **Acknowledgement** within 7 days
+- **A fix or documented mitigation** as soon as practical
+- **Credit** in the changelog, unless you prefer to stay anonymous
+
+Please allow reasonable time for a fix before public disclosure.

@@ -78,7 +78,7 @@ Other safeguards:
 - **Targets what attackers target.** With no arguments, CopyFix finds every setuid and setgid binary under `/usr/bin`, `/usr/sbin`, `/usr/lib` and `/usr/libexec`.
 - **Change detection.** If a file's inode, size or modification time changes during the check, the result is reported as `changed-during-scan` instead of guessing.
 - **Honest about filesystems.** On `tmpfs`, `overlay`, `squashfs` and other filesystems without an independent disk copy (for example a live ISO), a comparison proves nothing, so CopyFix reports `unsupported` instead of a false "clean".
-- **No dependencies.** Python 3.9+ standard library only.
+- **No dependencies.** Python 3.12+ standard library only.
 
 ---
 
@@ -101,7 +101,7 @@ Finding and fixing this in my own tool was the most useful part of the project. 
 
 ## Installation
 
-CopyFix is a single Python script. Python 3.9 or newer is preinstalled on most Linux distributions; check with `python3 --version`.
+CopyFix is a single Python script. Python 3.12 or newer is preinstalled on most Linux distributions; check with `python3 --version`.
 
 ```bash
 git clone https://github.com/Stlwtrs/CopyFix.git

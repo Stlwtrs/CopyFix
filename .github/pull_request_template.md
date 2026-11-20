@@ -1,41 +1,24 @@
-# Pull Request
+## What does this change?
 
-## Description 
+## Why?
 
-Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context.
+Fixes # (issue number, if any)
 
-Fixes # (issue number)
+## Testing
 
-## Type of change
+- [ ] `python3 -m unittest discover -s tests -v` passes
+- [ ] Ran `sudo ./copyfix.py -v` against real binaries (output below)
+- [ ] Added or updated tests for changed behavior
+- [ ] Updated `README.md` and `CHANGELOG.md` if usage or behavior changed
 
-Please delete options that are not relevant.
+<details><summary>CopyFix output</summary>
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
+```text
 
-- [ ] New feature (non-breaking change which adds functionality)
+```
 
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+</details>
 
-- [ ] This change requires a documentation update
+## Detection trade-offs
 
-## How Has This Been Tested?
-
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce.
-
-- [ ] Tested scanning default critical binaries (`sudo ./copyfix.py`)
-
-- [ ] Tested scanning a specific binary (`sudo ./copyfix.py --check /path/to/binary`)
-
-- [ ] Tested with a tampered binary to ensure the alert still triggers
-
-## Checklist:
-
-- [ ] My code follows the style guidelines of this project
-
-- [ ] I have performed a self-review of my own code
-
-- [ ] I have commented my code, particularly in hard to understand areas
-
-- [ ] I have made corresponding changes to the documentation
-
-- [ ] My changes generate no new warnings or errors
+<!-- Does this change make any check weaker, or add a new source of false positives? Explain. -->
